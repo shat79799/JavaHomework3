@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controller.OrderDetailController;
 import model.MyTableModel;
 
 public class OrderDetailView extends JFrame {
@@ -20,6 +21,8 @@ public class OrderDetailView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JButton backButton;
+	
+	private OrderDetailController oc = new OrderDetailController();
 
 	/**
 	 * Launch the application.
@@ -48,14 +51,7 @@ public class OrderDetailView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-//        String[] columnNames = {"Name", "Age"};
-//        Object[][] data = {{"Alice", 25}, {"Bob", 30}, {"Charlie", 35}};
-//        DefaultTableModel model = new DefaultTableModel(data, columnNames);
-		MyTableModel test = new MyTableModel();
-		System.out.println(test.getColumnCount());
-		System.out.println(test.getRowCount());
-        JTable table = new JTable(new MyTableModel());
-
+        JTable table = new JTable(oc.getTableModel());
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(50, 50, 600, 350);
         contentPane.add(scrollPane);
